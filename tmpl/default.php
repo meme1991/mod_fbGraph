@@ -21,6 +21,15 @@ $response = json_decode(file_get_contents($uri));
 
 var_dump($response);
 
+foreach ($response->data as $album) :
+  /* salvo link immagine grande da mostrare nel lightbox */
+  $bigImg = $album->images[0]->source;
+  /* link dell'immagine */
+  $linkFB = $album->link;
+  /* descrizione della foto */
+  $photoTitle = (isset($album->name)) ? $album->name : "I nostri lavori";
+  var_dump($album);
+endforeach;
 ?>
 
 <div class="<?= $mod_id ?>"></div>
